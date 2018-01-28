@@ -8,28 +8,18 @@ function handleCheck(e) {
   // AND if checking it
   if(e.shiftKey && this.checked) {
 
-    let lastIndex;
-    let currentIndex;
 
+    let encountered = 0
     checkboxes.forEach((checkbox, i) => {
-      if (checkbox === this) {
-        currentIndex = i;
-      } else if (checkbox === lastChecked) {
-        lastIndex = i;
-      }
-    })
 
-    checkboxes.forEach((checkbox, i) => {
-      if ((i < currentIndex && i > lastIndex) ||
-          (i > currentIndex && i < lastIndex)) {
-        checkbox.checked = true;
-      }
-    })
+      // increment encountered if checkbox is this or lastChecked
+      (checkbox === this || checkbox === lastChecked) && encountered++
 
-    console.log(lastIndex)
-    console.log(currentIndex)
+      // check if encountered one of this or lastChecked
+      encountered === 1 && (checkbox.checked = true)
+
+    })
   }
-
   lastChecked = this
 }
 
