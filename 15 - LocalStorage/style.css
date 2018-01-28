@@ -12,6 +12,19 @@
     }
     *, *:before, *:after {box-sizing: inherit; }
 
+    .button-container {
+      padding: 10px 0;
+      display: flex;
+      align-content: center;
+      /* background-color: green; */
+      justify-content: left;
+
+    }
+
+    .button-container > input {
+      margin-right: 5px;
+    }
+
     svg {
       fill:white;
       background: rgba(0,0,0,0.1);
@@ -55,7 +68,7 @@
     }
 
     .plates input {
-      display: none;
+      /* display: none; */
     }
 
     .plates input + label:before {
