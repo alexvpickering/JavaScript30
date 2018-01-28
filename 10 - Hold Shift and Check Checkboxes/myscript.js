@@ -9,15 +9,16 @@ function handleCheck(e) {
   if(e.shiftKey && this.checked) {
 
 
-    let encountered = 0
+    let inBetween = false
     checkboxes.forEach((checkbox, i) => {
 
       // increment encountered if checkbox is this or lastChecked
-      (checkbox === this || checkbox === lastChecked) && encountered++
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = ! inBetween
+      }
 
       // check if encountered one of this or lastChecked
-      encountered === 1 && (checkbox.checked = true)
-
+      inBetween && (checkbox.checked = true)
     })
   }
   lastChecked = this
