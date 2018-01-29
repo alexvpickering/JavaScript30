@@ -2,13 +2,12 @@ const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'N
 
 const bandsList = document.querySelector('#bands')
 
+function strip(bandName) {
+  return bandName.replace(/^(a |the |an )/gi, '').trim()
+}
 
 
-bands.sort((a, b) => {
-  const firstBand  = a.replace('The ', '').replace('An ', '').replace('A ', '')
-  const secondBand = b.replace('The ', '').replace('An ', '').replace('A ', '')
-  return firstBand > secondBand ? 1 : -1
-})
+bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1)
 
 const bandsItems = bands.map(band => {
     return `
